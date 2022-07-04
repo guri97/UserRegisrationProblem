@@ -25,6 +25,21 @@ namespace UserRegistrationTest
             // Assert
             Assert.AreEqual(expected, result);
         }
+        [Test]
+        public void LastName()
+        {
+            // Arrange 
+            bool expected = true;
+            string name = "Singh";
+            UserRegistrationDetails user = new UserRegistrationDetails();
+
+            // Act
+            bool result = user.ValidateLastName(name);
+
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+
 
     }
 }
