@@ -14,7 +14,7 @@ namespace UserRegistrationTestAndRegex
         //UC2
         public static string Regex_LastName = "^[A-Z][a-z]{2,}$";
         //UC3 and UC9
-        public static string Regex_Email = "^[a-zA-Z0-9]+([._+-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2,})?$";
+        public static string Regex_Email = "^[a-zA-Z0-9]+[.(a-zA-Z0-9)]*(\\@)[a-zA-Z0-9]+(\\.)[a-z]{2,3}[.(a-z)]*$";
         //UC4
         public static string Regex_MobileNumber = "^[1-9][0-9][ ]?[6-9][0-9]{9}$";
         //UC5 to UC8
@@ -115,6 +115,19 @@ namespace UserRegistrationTestAndRegex
             {
                 throw new UserRegistrationException(UserRegistrationException.ExceptionType.Empty_Message, "Password should not be empty.");
             }
+        }
+        public string CheckMultipleEmail(string Mail1, string Mail2, string Mail3, string Mail4, string Mail5)
+        {
+            UserRegistrationDetails Mail = new UserRegistrationDetails();
+            bool MailEntry1 = Mail.ValidateEmail(Mail1);
+            bool MailEntry2 = Mail.ValidateEmail(Mail2);
+            bool MailEntry3 = Mail.ValidateEmail(Mail3);
+            bool MailEntry4 = Mail.ValidateEmail(Mail4);
+            bool MailEntry5 = Mail.ValidateEmail(Mail5);
+            if (MailEntry1 && MailEntry2 && MailEntry3 && MailEntry4 && MailEntry5)
+                return "succesfull";
+            else
+                return "fail";
         }
 
     }
